@@ -1,4 +1,4 @@
-﻿
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,18 +10,18 @@
 <h3>Inventory List</h3>
 <p style="font-size:10px; margin:-27px; text-align:center;">Steven's Kitchen</p>
 <nav id="myNav">
-		<ul>
-			<li>
-			  <a href="foodspage.html">環南</a>
-			</li>
-			<li>
-			  <a href="grocerypage.html">立昌</a>
-			</li>
-			<li>
-			  <a href="hamspage.html">昶翔</a>
-			</li>
-		  </ul>
-	</nav>
+	<ul>
+		<li>
+		  <a href="foodspage.html">環南</a>
+		</li>
+		<li>
+		  <a href="grocerypage.html">立昌</a>
+		</li>
+		<li>
+		  <a href="hamspage.html">鼎記</a>
+		</li>
+	  </ul>
+</nav>
 <div>
 	<div id="sumtext">
 		<textarea id="myInput" contenteditable="true"> </textarea>
@@ -65,7 +65,7 @@ const menuData = [
 
 //{名稱,預設數量,單位} 
 const inventoryData = [
-	{ "name": "芝麻醬3kg*", "value": 1, "unit": "桶" },
+		{ "name": "芝麻醬3kg*", "value": 1, "unit": "桶" },
 	{ "name": "油潑辣籽3kg*", "value": 1, "unit": "桶" },
 	{ "name": "豆酥碎粉5斤*", "value": 1, "unit": "包" },
 	{ "name": "乾辣椒(切段)*", "value": 1, "unit": "包" },
@@ -97,7 +97,7 @@ const inventoryData = [
 	{ "name": "義式綜合香草*", "value": 1, "unit": "" },
 	{ "name": "普羅旺斯香草*", "value": 1, "unit": "罐" },
 	{ "name": "安佳無鹽奶油*", "value": 2, "unit": "條" },
-	{ "name": "冷凍檸檬原汁*", "value": 1, "unit": "瓶" },
+	{ "name": "冷凍檸檬原汁*", "value": 2, "unit": "瓶" },
 	{ "name": "半斤袋*", "value": 1, "unit": "捲" },
 	{ "name": "六兩袋*", "value": 2, "unit": "包" },
 	{ "name": "3號夾鍊袋*", "value": 4, "unit": "" },
@@ -148,10 +148,7 @@ function myFunction() {
 	
 }
 function selectall() {
-	var copyText = document.getElementById("myInput");
-	copyText.select();
-	copyText.setSelectionRange(0, 99999);
-	navigator.clipboard.writeText(copyText.value);
+	document.getElementById("myInput").select();
 }
 
 var input = document.getElementById("myInput");
