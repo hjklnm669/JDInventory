@@ -1,0 +1,133 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-weith, initial-scale=1; maximum-scale=1"  />
+	<title>Inventory List of Steven's Kitchen</title>
+	<link rel="stylesheet" type="text/css" href="style.css" media="all">
+<body >
+<h3>Inventory List</h3>
+<p style="font-size:10px; margin:-27px; text-align:center;">Steven's Kitchen</p>
+<nav id="myNav">
+	<ul>
+		<li>
+		  <a href="foodspage.html">環南</a>
+		</li>
+		<li>
+		  <a href="grocerypage.html">立昌</a>
+		</li>
+		<li>
+		  <a href="dumplingspage.html">鼎記</a>
+		</li>
+	  </ul>
+</nav>
+<div>
+	<div id="sumtext">
+		<p>總計</p>
+		<textarea id="myInput" contenteditable="true"> </textarea>
+		<button onclick="selectall()">Select</button>
+	</div>
+	<p>菜單品項:</p>
+	
+	<div id="menuitem"></div>
+	
+	<p>食材:</p>
+
+	<div id="container"></div>
+	
+	
+	
+	
+	<p>其它:</p>
+
+	<textarea onchange="myFunction()" id="addtext"></textarea><br/>
+	<input type="button" value="Enter" onclick="myFunction()">
+
+</div>
+<script>
+
+const menuData = [
+	{ "name": "麻醬", "value": 1, "unit": "" },
+	{ "name": "紅油", "value": 1, "unit": "" },
+	{ "name": "泰式酸辣", "value": 1, "unit": "" },
+	{ "name": "豆酥", "value": 1, "unit": "" },
+	{ "name": "蔥油", "value": 1, "unit": "" },
+	{ "name": "醬香宮保櫻花蝦", "value": 1, "unit": "" },
+	{ "name": "玉米巧達濃湯", "value": 1, "unit": "" },
+	{ "name": "南瓜珠貝濃湯", "value": 1, "unit": "" },
+	{ "name": "蕃茄蔬菜湯", "value": 1, "unit": "" },
+	{ "name": "泰式冬蔭功", "value": 1, "unit": "" },
+	{ "name": "麻辣湯", "value": 1, "unit": "" },
+	{ "name": "滷味湯", "value": 1, "unit": "" },
+	{ "name": "酸辣湯", "value": 1, "unit": "" },
+];
+
+
+//{名稱,預設數量,單位} 
+const inventoryData = [
+	{ "name": "高麗菜豬*", "value": 15, "unit": "包" },
+	{ "name": "韭菜*", "value": 15, "unit": "包" },
+	{ "name": "蝦仁*", "value": 10, "unit": "包" },
+	{ "name": "剝皮辣椒豬*", "value": 10, "unit": "包" },
+	{ "name": "香辣干碟*", "value": 1, "unit": "包" },
+	{ "name": "三星蔥豬*", "value": 1, "unit": "包" },
+];
+
+function inputData(){
+	/*for (i = 0; i<menuData.length; i++){
+		document.getElementById("menuitem").innerHTML += '<label><input type="checkbox" onclick="menuFunction()" name=' + menuData[i].name + ' value="">' + menuData[i].name + '</label><input type="text" onchange="menuFunction()" value="' + menuData[i].value + '" ><br/>';
+	}*/
+	for (i = 0; i<inventoryData.length; i++){
+		document.getElementById("container").innerHTML += '<label><input type="checkbox" onclick="myFunction()" name=' + inventoryData[i].name + ' value=' + inventoryData[i].unit + '>' + inventoryData[i].name + '</label><input type="text" onchange="myFunction()" value="' + inventoryData[i].value + '" >' + inventoryData[i].unit +'<br/>';
+	}
+} 
+inputData()
+
+function menuFunction() {
+
+}
+function myFunction() {
+	document.getElementById("myInput").value = "";
+	//document.getElementById("myInput").rows = 4;
+	
+	for (i = 0; i<inventoryData.length; i++){
+		
+		//var checkBox = document.querySelectorAll("input")[i];
+		var checkBox = document.querySelectorAll('input[type="checkbox"]')[i];
+		var num = document.querySelectorAll('input[type="text"]')[i].value;
+		var add = document.getElementById("addtext").value;
+		
+		if (checkBox.checked == true){
+			document.getElementById("myInput").value += checkBox.name;
+			document.getElementById("myInput").value += num;
+			document.getElementById("myInput").value += checkBox.value;
+			document.getElementById("myInput").value += "\n";
+			//if (i > 1){
+			//	document.getElementById("myInput").rows += 1;
+			//}
+		} else { 
+			//text.style.display = "none";
+		}
+		//document.getElementById("myInput").value += i;
+	}
+	document.getElementById("myInput").value += add;
+	
+}
+function selectall() {
+	document.getElementById("myInput").select();
+}
+
+var input = document.getElementById("myInput");
+
+input.addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    myFunction();
+  }
+});
+</script>
+
+
+</body>
+</html>
